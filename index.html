@@ -114,10 +114,12 @@
 
 				<script type="text/ecmascript">
 					var svgNS = "http://www.w3.org/2000/svg";
-					var svgDoc;
+					var svgDoc = window.document;
 
 					var polyOctagon = document.querySelector('#poly-octagon'); //shapeElm
 					var rotateElm;
+					var polyLightray = document.querySelector('#poly-lightray');
+					var pauseButton = document.querySelector('.pause');
 
 					function addRotateTransform(shapeElm, dur, dir) {
 						var a = svgDoc.createElementNS(svgNS, 'animateTransform');
@@ -139,16 +141,10 @@
 						rotateElm = a;
 					}
 
-					window.onload = function () {
-						if (window.svgDocument == null) {
-							svgDoc = window.document;
-							console.log('SVGLoad fired', svgDoc);
-						}
+					// initialize octagon's rotating animation
+					if (!rotateElm) {
 						addRotateTransform(polyOctagon, 12, 1); /*6.4*/
 					}
-
-					var pauseButton = document.querySelector('.pause');
-					var polyLightray = document.querySelector('#poly-lightray');
 
 					pauseButton.addEventListener('click', function (e) {
 						e.stopImmediatePropagation();
