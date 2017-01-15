@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Speed of Light</title>
+		<link href="impress-custom.css" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<style>
+			.step.future,
+			.step.past {
+				opacity: 0;
+			}
+			.microstep {
+				line-height: 0;
+				opacity: 0;
+				margin-top: 0;
+				transition:
+					line-height 0.6s,
+					opacity 0.6s,
+					margin-top 0.6s;
+			}
+			.present .microstep.show {
+				line-height: 1.5;
+				opacity: 1;
+				margin-top: 5px;
+			}
+			ul {
+				list-style: none;
+			}
+			li {
+				padding-left: 1em;
+				text-indent: -0.7em;
+			}
+			li:before {
+				content: "• ";
+				color: white;
+			}
+			#footer {
+				background: white; /*#232323;*/
+				border-top: 1px solid #333;
+				bottom: 0;
+				display: block;
+				height: 90px;
+				left: 0;
+				line-height: 90px;
+				pointer-events: auto;
+				position: absolute;
+				right: 0;
+				top: auto;
+				user-select: none;
+				width: 100%;
+				z-index: 200;
+			}
+
+			#poly-lightray {
+				stroke-dasharray: 2000; /*200*/
+				stroke-dashoffset: 2000;
+				animation-name: dash;
+				animation-duration: 1.5s; /*4*/
+				animation-timing-function: linear;
+				animation-fill-mode: both;
+				animation-iteration-count: infinite;
+			}
+
+			@keyframes dash {
+				to {
+					stroke-dashoffset: 0;
+				}
+			}
+		</style>
+	</head>
+
+	<body style="background-color: white;">
+		<div id="impress">
+			<section class="step" data-z="4000">
+				Slide 1
+			</section>
+
+			<section class="step">
+
+				<div class="lightbulb" style="width:60px; height:60px; position:absolute; left:50px; top:-230px;">
+					<svg viewBox="0 0 165 165" xmlns="http://www.w3.org/2000/svg">
+						<path d="M90.3 72.1H79.2l7.6-9.5c1-1.2 0.8-3-0.4-4-1.2-1-3-0.8-4 0.4L71.1 73.1c-0.7 0.8-0.8 2-0.3 3 0.5 1 1.5 1.6 2.5 1.6h11.1l-7.6 9.5c-1 1.2-0.8 3 0.4 4 0.5 0.4 1.1 0.6 1.8 0.6 0.8 0 1.6-0.4 2.2-1.1l11.3-14.1c0.7-0.8 0.8-2 0.3-3C92.4 72.7 91.4 72.1 90.3 72.1zM81.8 27.8c2.1 0 3.9-1.7 3.9-3.9V12.3c0-2.1-1.7-3.9-3.9-3.9-2.1 0-3.9 1.7-3.9 3.9v11.6C77.9 26.1 79.7 27.8 81.8 27.8zM49 41.6c1.5-1.5 1.6-4 0-5.5l-8.2-8.2c-1.5-1.5-4-1.6-5.5 0-1.5 1.5-1.6 4 0 5.5l8.2 8.2C45 43.2 47.5 43.1 49 41.6zM35.5 74.7c0-2.1-1.7-3.9-3.9-3.9H20c-2.1 0-3.9 1.7-3.9 3.9 0 2.1 1.7 3.9 3.9 3.9h11.6C33.8 78.6 35.5 76.8 35.5 74.7zM114.9 41.3c1.5 1.5 4 1.6 5.5 0l8.2-8.2c1.5-1.5 1.6-4 0-5.5-1.5-1.5-4-1.6-5.5 0l-8.2 8.2C113.3 37.3 113.4 39.8 114.9 41.3zM128.7 74.1c0 2.1 1.7 3.9 3.9 3.9h11.6c2.1 0 3.9-1.7 3.9-3.9 0-2.1-1.7-3.9-3.9-3.9h-11.6C130.4 70.2 128.7 72 128.7 74.1zM81.9 35.8c-20.8 0-37.8 16.9-37.8 37.8 0 11.2 4.9 21.7 13.5 29 0.2 0.2 0.4 0.4 0.6 0.5 5.9 4.1 9.2 16.7 9.2 22.5v3.6h7.2 14.4 7.2v-3.6c0-5.7 3.4-18.4 9.2-22.5 0.2-0.2 0.4-0.3 0.6-0.5 8.6-7.1 13.5-17.6 13.5-29C119.7 52.8 102.7 35.8 81.9 35.8zM101 97.5l-0.1 0.1c-6.3 4.6-10.4 17.8-11.5 24.5h-15c-1.1-6.7-5.2-19.9-11.7-24.5l-0.1-0.1c-7.2-5.8-11.3-14.5-11.3-23.8 0-16.8 13.7-30.6 30.6-30.6s30.6 13.7 30.6 30.6C112.4 82.9 108.2 91.6 101 97.5zM67.4 135.4c0 2 1.6 3.6 3.6 3.6h21.6c2 0 3.6-1.6 3.6-3.6 0-2-1.6-3.6-3.6-3.6H71.1C69 131.7 67.4 133.4 67.4 135.4zM67.4 144.4c0 2 1.6 3.6 3.6 3.6h21.6c2 0 3.6-1.6 3.6-3.6 0-2-1.6-3.6-3.6-3.6H71.1C69 140.8 67.4 142.5 67.4 144.4zM70.9 153.5c0 2 1.6 3.6 3.6 3.6h14.6c2 0 3.6-1.6 3.6-3.6 0-2-1.6-3.6-3.6-3.6H74.6C72.5 149.9 70.9 151.6 70.9 153.5z" fill="#EA3C44"/>
+					</svg>
+				</div>
+				<div class="octagon" style="width:800px; height:800px; position:absolute; left:292px; top:-320px; z-index:0">
+					<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" onload="init(evt)">
+						<polygon id="poly-octagon" points="34.2,87.4 12.3,65.5 12.3,34.5 34.2,12.6 65.2,12.6 87.1,34.5 87.1,65.5 65.2,87.4" fill="blue"></polygon>
+					</svg>
+				</div>
+				<div class="eyes" style="width:56px; height:56px; position:absolute; left:640px; top:-230px;">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+						<style>.a{fill:#FFF}.b{fill:#EA3C44}</style>
+						<path d="M48.3 65.8c0 6.6-9.8 12-21.9 12 -12.1 0-21.9-5.4-21.9-12 0-6.6 9.8-12 21.9-12C38.5 53.8 48.3 59.2 48.3 65.8z" class="a"/><path d="M123.5 65.8c0 6.6-9.8 12-21.9 12 -12.1 0-21.9-5.4-21.9-12 0-6.6 9.8-12 21.9-12C113.7 53.8 123.5 59.2 123.5 65.8z" class="a"/><path d="M34.8 50.3c-3.3-1.1-7-1.6-10.8-1.3 -9 0.7-18.3 7-21.7 15.4 -0.3 0.9-0.7 1.8-0.9 2.7 -0.2 1-0.4 2.8-0.2 3.8 0.2 0.6 1 1.7 1.7 1.7 2.6 0.2 4.3-5.8 6.2-7.1 0.8-0.6 1.9-1.7 3-1.6 1.6 0.2 1.3 3.8 1.6 4.8 0.6 2.2 2.1 4.7 3.8 6.2 6.4 6.2 19.2 5.2 22.8-3.5 0.6-1.5 1-4 2.5-4.9 0.5-0.3 1.7-0.1 2.2 0.2 0.7 0.4 1.4 1.3 2 1.8 1 0.9 1.8 2.3 3.4 1.9 1-0.2 1.3-1 1.3-1.9 -0.1-2-1.2-4-2.2-5.7C46 56.7 40.9 52.4 34.8 50.3z" class="b"/><path d="M126.7 67.2c-0.2-0.9-0.6-1.9-0.9-2.7 -3.3-8.5-12.7-14.7-21.7-15.4 -3.8-0.3-7.5 0.1-10.8 1.3 -6.1 2.1-11.2 6.4-14.6 12.7 -0.9 1.7-2.1 3.7-2.2 5.7 0 0.9 0.3 1.7 1.3 1.9 1.6 0.3 2.4-1 3.4-1.9 0.6-0.6 1.3-1.4 2-1.8 0.5-0.3 1.7-0.5 2.2-0.2 1.5 0.9 1.9 3.4 2.5 4.9 3.6 8.7 16.4 9.7 22.8 3.5 1.6-1.5 3.2-4.1 3.8-6.2 0.3-1 0-4.6 1.6-4.8 1.1-0.2 2.2 1 3 1.6 1.8 1.4 3.6 7.3 6.2 7.1 0.7 0 1.6-1.1 1.7-1.7C127.1 70 126.9 68.2 126.7 67.2z" class="b"/>
+						<path d="M25.2 62.5c-1 2.7-5.2 3.8-7.1 1.6 -1.5-1.7-1-4.1 0.7-5.5C21.7 55.9 26.5 59 25.2 62.5z" class="a"/>
+						<path d="M97.9 62.5c-1 2.7-5.2 3.8-7.1 1.6 -1.5-1.7-1-4.1 0.7-5.5C94.4 55.9 99.2 59 97.9 62.5z" class="a"/>
+					</svg>
+				</div>
+				<div class="reflector" style="position:absolute; left:0; top:260px; z-index:0">
+					<svg width="600" height="400">
+						<path d="M300,50 Q370,120 440,50" fill="none" stroke="blue" stroke-width="8px" />
+					</svg>
+				</div>
+				<div class="lightray" style="position:absolute; left:0; top:-220px; z-index:10">
+					<svg width="1000px" height="800px">
+						<polyline id="poly-lightray"
+							points="112 17, 320 17, 371 560, 422 17, 630 17"
+							fill="none"
+							stroke="orange"
+							stroke-width="4px"/>
+					</svg>
+				</div>
+				<div class="pause" style="min-width:60px; color:white; font-size:20px; text-align:center; padding:5px; background-color:red; cursor:pointer; position:absolute; left:600px; top:220px; z-index:12">Pause</div>
+
+				<script type="text/ecmascript">
+					var svgNS = "http://www.w3.org/2000/svg";
+					var svgDoc;
+
+					var polyOctagon = document.querySelector('#poly-octagon'); //shapeElm
+					var rotateElm;
+
+					function addRotateTransform(shapeElm, dur, dir) {
+						var a = svgDoc.createElementNS(svgNS, 'animateTransform');
+
+						var bb = shapeElm.getBBox();
+						var cx = bb.x + bb.width/2;
+						var cy = bb.y + bb.height/2;
+
+						a.setAttributeNS(null, 'attributeName', 'transform');
+						a.setAttributeNS(null, 'attributeType', 'XML');
+						a.setAttributeNS(null, 'type', 'rotate');
+						a.setAttributeNS(null, 'dur', dur + 's');
+						a.setAttributeNS(null, 'repeatCount', 'indefinite');
+						a.setAttributeNS(null, 'from', '0 '+cx+' '+cy);
+						a.setAttributeNS(null, 'to', 360*dir+' '+cx+' '+cy);
+
+						shapeElm.appendChild(a);
+						a.beginElement();
+						rotateElm = a;
+					}
+
+					function init(evt) {
+						if (window.svgDocument == null) {
+							svgDoc = evt.target.ownerDocument;
+						}
+						addRotateTransform(polyOctagon, 12, 1); /*6.4*/
+					}
+
+
+					var pauseButton = document.querySelector('.pause');
+					var polyLightray = document.querySelector('#poly-lightray');
+
+					pauseButton.addEventListener('click', function (e) {
+						e.stopImmediatePropagation();
+
+						var lightrayStyle = polyLightray.style;
+
+						if (!lightrayStyle.animationPlayState) {
+							this.style.backgroundColor = 'green';
+							this.textContent = 'Resume';
+							lightrayStyle.animationPlayState = 'paused';
+							rotateElm.ownerSVGElement.pauseAnimations();
+
+							console.log(rotateElm.ownerSVGElement);
+							console.log(polyOctagon);
+
+						} else {
+							this.style.backgroundColor = 'red';
+							this.textContent = 'Pause';
+							lightrayStyle.animationPlayState = '';
+							rotateElm.ownerSVGElement.unpauseAnimations();
+						}
+					});
+				</script>
+
+			</section>
+
+		</div>
+
+		<div id="footer">
+			<p style="font-size:26px; text-align:center;">Use arrows keys or spacebar to navigate</p>
+		</div>
+
+		<!-- <script src="http://netdna.impressjscdn.com/impressjs/0.5.3/js/impress.js"></script> -->
+		<script src="impress.js"></script>
+		<script src="microsteps.js"></script>
+		<script>
+			document.addEventListener('keydown', function (e) {
+				var k = e.keyCode;
+
+				// spacebar, left arrow, up arrow, right arrow, down arrow
+				if (k === 32 || k === 37 || k === 38 || k === 39 || k === 40) {
+					document.getElementById('footer').style.display = 'none';
+				}
+			});
+		</script>
+	</body>
+</html>

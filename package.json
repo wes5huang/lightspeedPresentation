@@ -1,0 +1,15 @@
+{
+  "name": "speedoflight",
+  "version": "0.1.0",
+  "description": "Speed of Light presentation by Wesley Huang",
+  "engines": {
+    "node": "5.9.1"
+  },
+  "main": "",
+  "scripts": null,
+  "dependencies": {
+    "impress.js": "^0.6.0"
+  },
+  "author": "Wesley Huang",
+  "license": "MIT"
+}
